@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MumLoadingView">
+        <attr name="colorStyle">
+            <enum name="blue" value="1" />
+            <enum name="grey" value="0" />
+        </attr>
+        <attr name="progressWidth" format="dimension"/>
+        <attr name="progressHeight" format="dimension"/>
+    </declare-styleable>
+</resources>

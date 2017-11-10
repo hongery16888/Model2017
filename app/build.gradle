@@ -1,0 +1,84 @@
+apply plugin: 'com.android.application'
+
+//具体参数看gradle.properties
+def VersionCode = versionCode as int
+def VersionName = versionName
+
+android {
+    compileSdkVersion compileVersion as int
+    buildToolsVersion buildtoolVersion
+//    signingConfigs {
+//        debug {
+//            storeFile file('release.keystore')
+//            storePassword "neoteched"
+//            keyAlias "releasekey"
+//            keyPassword "neoteched"
+//        }
+//        config {
+//            storeFile file('release.keystore')
+//            storePassword "neoteched"
+//            keyAlias "releasekey"
+//            keyPassword "neoteched"
+//            //签名:1a98e2653e10c99fcb8740d299db9025
+//        }
+//    }
+    defaultConfig {
+        applicationId "iori.iorimodel_2017"
+        minSdkVersion minVersion as int
+        targetSdkVersion targetVersion as int
+        versionCode VersionCode
+        versionName VersionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+    }
+    dexOptions {
+        dexInProcess true
+        preDexLibraries true
+        javaMaxHeapSize "4G"
+        preDexLibraries = true
+    }
+    buildTypes {
+        buildTypes {
+            debug {
+                // 显示Log
+                buildConfigField "boolean", "LOG_DEBUG", "true"
+                versionNameSuffix "-debug"
+                minifyEnabled false
+                zipAlignEnabled false
+                shrinkResources false
+            }
+            release {
+                buildConfigField "boolean", "LOG_DEBUG", "false"
+                minifyEnabled false
+                zipAlignEnabled true
+                shrinkResources false
+//                signingConfig signingConfigs.config
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            }
+        }
+    }
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.2.1'
+    annotationProcessor "org.androidannotations:androidannotations:4.3.1"
+    testCompile 'junit:junit:4.12'
+    compile project(':basecore')
+    compile project(':firstmodule')
+    compile('com.github.hotchemi:permissionsdispatcher:2.4.0') { exclude module: 'support-v13' }
+    annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:2.4.0'
+}

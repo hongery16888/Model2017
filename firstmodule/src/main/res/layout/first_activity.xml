@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="tsm"
+            type="iori.firstmodule.viewmodel.FirstViewModel" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@android:color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{tsm.from}"
+            android:textSize="30sp"
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{tsm.to}"
+            android:textSize="30sp"
+            android:layout_marginTop="30dip"
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{tsm.out}"
+            android:textSize="30sp"
+            android:layout_marginTop="30dip"
+            android:textColor="@android:color/black"/>
+
+        <Button
+            android:id="@+id/refresh_act_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="下拉刷新"/>
+
+        <Button
+        android:id="@+id/multiply_lay_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="多层嵌套"
+        android:layout_marginTop="10dip"/>
+
+        <Button
+            android:id="@+id/smart_lay_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Smart 样式"
+            android:layout_marginTop="10dip"/>
+    </LinearLayout>
+</layout>

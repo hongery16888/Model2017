@@ -1,0 +1,5 @@
+<resources>
+    <string name="from">From : </string>
+    <string name="to">To : </string>
+    <string name="out">Translate : </string>
+</resources>
